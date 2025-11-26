@@ -119,32 +119,6 @@ export function LoginForm({
                     )}
                   />
                 </div>
-                <div className="grid gap-2">
-                  <FormField
-                    control={form.control}
-                    name="password"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Password</FormLabel>
-                        <FormControl>
-                          <Input
-                            placeholder="********"
-                            type="password"
-                            {...field}
-                            required
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <Link
-                    href="/forgot-password"
-                    className="ml-auto text-sm leading-none font-medium underline-offset-2 hover:underline"
-                  >
-                    Forgot your password?
-                  </Link>
-                </div>
                 <Button type="submit" className="w-full" disabled={isLoading}>
                   {isLoading ? (
                     <LoaderCircle className="animate-spin" />
@@ -177,12 +151,6 @@ export function LoginForm({
                       </>
                     )}
                   </Button>
-                </div>
-                <div className="text-center text-sm">
-                  Don&apos;t have an account?{" "}
-                  <Link href="/signup" className="underline underline-offset-2">
-                    Sign up
-                  </Link>
                 </div>
               </div>
             </form>
