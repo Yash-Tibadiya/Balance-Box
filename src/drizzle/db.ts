@@ -4,4 +4,4 @@ import * as schema from "./schema";
 import { config } from "@/config/config";
 
 const sql = neon(config.databaseUrl!);
-const db = drizzle({ client: sql, schema });
+export const db = drizzle({ client: sql, schema });
