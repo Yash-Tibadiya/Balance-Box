@@ -20,7 +20,8 @@ export default function LoginPage() {
               priority
             />
           </div>
-          <span className="text-3xl font-bold">Acme Inc</span>
+          // TODO: Add name and Logo
+          <span className="text-3xl font-bold">Balance Box</span>
         </Link>
         <LoginForm />
       </div>
