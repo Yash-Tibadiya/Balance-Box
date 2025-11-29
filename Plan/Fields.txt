@@ -1,0 +1,20 @@
+# user
+  1. id
+  2. name
+  3. email
+  4. emailVerified
+  5. image
+  6. createdAt
+  7. updatedAt
+
+  8. phone
+  9. businessName
+  10. businessAddress
+  11. businessCity
+  12. businessState
+  13. businessCountry
+  14. businessZip
+  15. gstNumber
+
+----------------------------------------
+  11.businessPartners []

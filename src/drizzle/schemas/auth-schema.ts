@@ -7,6 +7,14 @@ export const user = pgTable("user", {
   email: text("email").notNull().unique(),
   emailVerified: boolean("email_verified").default(false).notNull(),
   image: text("image"),
+  phone: text("phone"),
+  businessName: text("business_name"),
+  businessAddress: text("business_address"),
+  businessCity: text("business_city"),
+  businessState: text("business_state"),
+  businessCountry: text("business_country"),
+  businessZip: text("business_zip"),
+  gstNumber: text("gst_number"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at")
     .defaultNow()
