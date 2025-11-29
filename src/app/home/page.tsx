@@ -5,7 +5,7 @@ const Home = () => {
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
       <div className="flex flex-col items-center gap-6">
-        // TODO: Add name and Logo
+        {/* TODO: Add name and Logo */}
         <h1 className="text-4xl font-bold">Welcome to Balance Box</h1>
         <p className="text-lg text-gray-600 dark:text-gray-400">
           Sign in to your account to continue

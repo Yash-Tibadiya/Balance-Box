@@ -20,7 +20,7 @@ export default function LoginPage() {
               priority
             />
           </div>
-          // TODO: Add name and Logo
+          {/* TODO: Add name and Logo */}
           <span className="text-3xl font-bold">Balance Box</span>
         </Link>
         <LoginForm />
