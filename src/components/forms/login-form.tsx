@@ -73,7 +73,7 @@ export function LoginForm({
       toast.error(error.message || "Invalid code");
     } else {
       toast.success("Logged in successfully");
-      router.push("/");
+      router.push("/business-info");
     }
     setLoading(false);
   };
@@ -83,7 +83,7 @@ export function LoginForm({
     toast.info("Redirecting to Google...");
     await authClient.signIn.social({
       provider: "google",
-      callbackURL: "/",
+      callbackURL: "/business-info",
     });
     setIsGoogleLoading(false);
   };

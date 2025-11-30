@@ -1,13 +1,13 @@
 "use client";
 
-import { LoginForm } from "@/components/forms/login-form";
+import { BusinessInfoForm } from "@/components/forms/business-info-form";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
 
-export default function LoginPage() {
+export default function BusinessInfoPage() {
   const [loading, setLoading] = useState(true);
   const router = useRouter();
 
@@ -15,19 +15,23 @@ export default function LoginPage() {
     const checkSession = async () => {
       try {
         const { data } = await authClient.getSession();
-        if (data) {
-          // User is already logged in, check business info
-          const response = await fetch("/api/user/check-business-info");
-          const result = await response.json();
-          
-          if (result.hasBusinessInfo) {
-            router.push("/");
-          } else {
-            router.push("/business-info");
-          }
+        if (!data) {
+          // User is not logged in, redirect to login
+          router.push("/login");
+          return;
+        }
+
+        // Check if business info is already completed
+        const response = await fetch("/api/user/check-business-info");
+        const result = await response.json();
+
+        if (result.hasBusinessInfo) {
+          // Business info already completed, redirect to home
+          router.push("/");
         }
       } catch (error) {
         console.error("Error checking session:", error);
+        router.push("/login");
       } finally {
         setLoading(false);
       }
@@ -66,8 +70,9 @@ export default function LoginPage() {
           {/* TODO: Add name and Logo */}
           <span className="text-3xl font-bold">Balance Box</span>
         </Link>
-        <LoginForm />
+        <BusinessInfoForm />
       </div>
     </div>
   );
 }
+
