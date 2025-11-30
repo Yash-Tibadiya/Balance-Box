@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { Field, FieldLabel, FieldError } from "@/components/ui/field";
 import { Button } from "../ui/button";
+import { updateCurrentUserBusinessInfo } from "@/models/users-actions";
 
 export function BusinessInfoForm({
   className,
@@ -35,19 +36,11 @@ export function BusinessInfoForm({
     setError(null);
 
     try {
-      const response = await fetch("/api/user/business-info", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const result = await updateCurrentUserBusinessInfo(formData);
 
-      const data = await response.json();
-
-      if (!response.ok) {
-        setError(data.error || "Failed to save business information");
-        toast.error(data.error || "Failed to save business information");
+      if (!result.success) {
+        setError(result.error || "Failed to save business information");
+        toast.error(result.error || "Failed to save business information");
         setLoading(false);
         return;
       }
@@ -88,7 +81,9 @@ export function BusinessInfoForm({
                     required
                     placeholder="Your Business Name"
                     value={formData.businessName}
-                    onChange={(e) => handleChange("businessName", e.target.value)}
+                    onChange={(e) =>
+                      handleChange("businessName", e.target.value)
+                    }
                   />
                 </Field>
 
@@ -105,14 +100,18 @@ export function BusinessInfoForm({
                 </Field>
 
                 <Field>
-                  <FieldLabel htmlFor="businessAddress">Business Address</FieldLabel>
+                  <FieldLabel htmlFor="businessAddress">
+                    Business Address
+                  </FieldLabel>
                   <Input
                     id="businessAddress"
                     type="text"
                     required
                     placeholder="Street Address"
                     value={formData.businessAddress}
-                    onChange={(e) => handleChange("businessAddress", e.target.value)}
+                    onChange={(e) =>
+                      handleChange("businessAddress", e.target.value)
+                    }
                   />
                 </Field>
 
@@ -125,7 +124,9 @@ export function BusinessInfoForm({
                       required
                       placeholder="City"
                       value={formData.businessCity}
-                      onChange={(e) => handleChange("businessCity", e.target.value)}
+                      onChange={(e) =>
+                        handleChange("businessCity", e.target.value)
+                      }
                     />
                   </Field>
 
@@ -137,7 +138,9 @@ export function BusinessInfoForm({
                       required
                       placeholder="State"
                       value={formData.businessState}
-                      onChange={(e) => handleChange("businessState", e.target.value)}
+                      onChange={(e) =>
+                        handleChange("businessState", e.target.value)
+                      }
                     />
                   </Field>
                 </div>
@@ -151,7 +154,9 @@ export function BusinessInfoForm({
                       required
                       placeholder="Country"
                       value={formData.businessCountry}
-                      onChange={(e) => handleChange("businessCountry", e.target.value)}
+                      onChange={(e) =>
+                        handleChange("businessCountry", e.target.value)
+                      }
                     />
                   </Field>
 
@@ -163,7 +168,9 @@ export function BusinessInfoForm({
                       required
                       placeholder="ZIP Code"
                       value={formData.businessZip}
-                      onChange={(e) => handleChange("businessZip", e.target.value)}
+                      onChange={(e) =>
+                        handleChange("businessZip", e.target.value)
+                      }
                     />
                   </Field>
                 </div>
@@ -198,4 +205,3 @@ export function BusinessInfoForm({
     </div>
   );
 }
-
