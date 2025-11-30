@@ -1,8 +1,44 @@
+"use client";
+
 import { LoginForm } from "@/components/forms/login-form";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { authClient } from "@/lib/auth-client";
 
 export default function LoginPage() {
+  const [loading, setLoading] = useState(true);
+  const router = useRouter();
+
+  useEffect(() => {
+    const checkSession = async () => {
+      try {
+        const { data } = await authClient.getSession();
+        if (data) {
+          // User is already logged in, redirect to home
+          router.push("/");
+        }
+      } catch (error) {
+        console.error("Error checking session:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    checkSession();
+  }, [router]);
+
+  if (loading) {
+    return (
+      <div className="bg-muted flex min-h-svh flex-col items-center justify-center p-6 md:p-10">
+        <div className="text-center">
+          <p className="text-muted-foreground">Loading...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="bg-muted flex min-h-svh flex-col items-center justify-center p-6 md:p-10">
       <div className="flex w-full max-w-sm flex-col gap-6 md:max-w-3xl">

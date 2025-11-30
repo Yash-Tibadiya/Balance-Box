@@ -3,6 +3,14 @@ import { NextRequest, NextResponse } from "next/server";
 export default function proxy(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
+  // Check for session cookie
+  const sessionCookie = request.cookies.get("better-auth.session_token");
+
+  // If user is authenticated and trying to access login page, redirect to home
+  if (sessionCookie && pathname === "/login") {
+    return NextResponse.redirect(new URL("/", request.url));
+  }
+
   // Paths that don't require authentication
   const publicPaths = ["/home", "/login"];
 
@@ -10,9 +18,6 @@ export default function proxy(request: NextRequest) {
   if (publicPaths.includes(pathname)) {
     return NextResponse.next();
   }
-
-  // Check for session cookie
-  const sessionCookie = request.cookies.get("better-auth.session_token");
 
   // If user is not authenticated and trying to access protected path
   if (!sessionCookie) {
