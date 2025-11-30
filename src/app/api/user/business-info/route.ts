@@ -9,10 +9,7 @@ export async function POST(request: NextRequest) {
     });
 
     if (!session?.user) {
-      return NextResponse.json(
-        { error: "Unauthorized" },
-        { status: 401 }
-      );
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const body = await request.json();
@@ -65,4 +62,3 @@ export async function POST(request: NextRequest) {
     );
   }
 }
-

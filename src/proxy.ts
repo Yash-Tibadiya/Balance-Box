@@ -39,13 +39,21 @@ export default async function proxy(request: NextRequest) {
   // If user is not authenticated and trying to access protected path
   if (!sessionCookie) {
     // Redirect to /home for unauthenticated users
-    if (pathname === "/" || pathname.startsWith("/(dashboard)") || pathname === "/business-info") {
+    if (
+      pathname === "/" ||
+      pathname.startsWith("/(dashboard)") ||
+      pathname === "/business-info"
+    ) {
       return NextResponse.redirect(new URL("/home", request.url));
     }
   }
 
   // If user is authenticated, check business info for protected paths (except business-info page and API routes)
-  if (sessionCookie && pathname !== "/business-info" && !pathname.startsWith("/api")) {
+  if (
+    sessionCookie &&
+    pathname !== "/business-info" &&
+    !pathname.startsWith("/api")
+  ) {
     try {
       const session = await auth.api.getSession({
         headers: request.headers,

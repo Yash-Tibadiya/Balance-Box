@@ -19,7 +19,7 @@ export default function LoginPage() {
           // User is already logged in, check business info
           const response = await fetch("/api/user/check-business-info");
           const result = await response.json();
-          
+
           if (result.hasBusinessInfo) {
             router.push("/");
           } else {

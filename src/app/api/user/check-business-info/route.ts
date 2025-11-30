@@ -17,10 +17,7 @@ export async function GET(request: NextRequest) {
 
     const completed = await hasBusinessInfo(session.user.id);
 
-    return NextResponse.json(
-      { hasBusinessInfo: completed },
-      { status: 200 }
-    );
+    return NextResponse.json({ hasBusinessInfo: completed }, { status: 200 });
   } catch (error) {
     console.error("Error checking business info:", error);
     return NextResponse.json(
@@ -29,4 +26,3 @@ export async function GET(request: NextRequest) {
     );
   }
 }
-

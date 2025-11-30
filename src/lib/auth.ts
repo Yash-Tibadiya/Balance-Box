@@ -29,8 +29,8 @@ export const auth = betterAuth({
           type === "sign-in"
             ? "Your Login Code"
             : type === "email-verification"
-              ? "Verify Your Email"
-              : "Reset Your Password";
+            ? "Verify Your Email"
+            : "Reset Your Password";
 
         await resend.emails.send({
           from: `${config.emailSenderName} <${config.emailSenderAddress}>`,
