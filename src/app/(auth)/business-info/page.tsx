@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
+import { checkCurrentUserBusinessInfo } from "@/models/users-actions";
 
 export default function BusinessInfoPage() {
   const [loading, setLoading] = useState(true);
@@ -21,11 +22,10 @@ export default function BusinessInfoPage() {
           return;
         }
 
-        // Check if business info is already completed
-        const response = await fetch("/api/user/check-business-info");
-        const result = await response.json();
+        // Check if business info is already completed using model function
+        const hasInfo = await checkCurrentUserBusinessInfo();
 
-        if (result.hasBusinessInfo) {
+        if (hasInfo) {
           // Business info already completed, redirect to home
           router.push("/");
         }

@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
+import { checkCurrentUserBusinessInfo } from "@/models/users-actions";
 
 export default function LoginPage() {
   const [loading, setLoading] = useState(true);
@@ -16,11 +17,10 @@ export default function LoginPage() {
       try {
         const { data } = await authClient.getSession();
         if (data) {
-          // User is already logged in, check business info
-          const response = await fetch("/api/user/check-business-info");
-          const result = await response.json();
+          // User is already logged in, check business info using model function
+          const hasInfo = await checkCurrentUserBusinessInfo();
 
-          if (result.hasBusinessInfo) {
+          if (hasInfo) {
             router.push("/");
           } else {
             router.push("/business-info");
