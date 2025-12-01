@@ -9,7 +9,7 @@ import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { Field, FieldLabel, FieldError } from "@/components/ui/field";
-import { Button } from "../ui/button";
+import { Button } from "../../../components/ui/button";
 import { updateCurrentUserBusinessInfo } from "@/models/users-actions";
 
 export function BusinessInfoForm({

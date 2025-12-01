@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { Input } from "@/components/ui/input";
-import { SvgBlackGoogleIcon } from "../icons/Icons";
+import { SvgBlackGoogleIcon } from "../../../components/icons/Icons";
 import { Card, CardContent } from "@/components/ui/card";
 import { LoaderCircle } from "lucide-react";
 import { toast } from "sonner";
@@ -17,7 +17,7 @@ import {
   InputOTPSlot,
 } from "@/components/ui/input-otp";
 import { Field, FieldLabel, FieldError } from "@/components/ui/field";
-import { Button } from "../ui/button";
+import { Button } from "../../../components/ui/button";
 
 export function LoginForm({
   className,

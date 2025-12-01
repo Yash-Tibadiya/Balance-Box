@@ -1,6 +1,6 @@
 "use client";
 
-import { BusinessInfoForm } from "@/components/forms/business-info-form";
+import { BusinessInfoForm } from "@/app/(auth)/_components/business-info-form";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
