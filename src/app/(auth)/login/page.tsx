@@ -1,12 +1,11 @@
 "use client";
 
-import { LoginForm } from "@/app/(auth)/_components/login-form";
-import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
 import { checkCurrentUserBusinessInfo } from "@/models/users-actions";
+import { LoginForm } from "../_components/login-form";
+import { cn } from "@/lib/utils";
 
 export default function LoginPage() {
   const [loading, setLoading] = useState(true);
@@ -38,7 +37,7 @@ export default function LoginPage() {
 
   if (loading) {
     return (
-      <div className="bg-muted flex min-h-svh flex-col items-center justify-center p-6 md:p-10">
+      <div className="flex min-h-svh flex-col items-center justify-center p-6 md:p-10">
         <div className="text-center">
           <p className="text-muted-foreground">Loading...</p>
         </div>
@@ -47,27 +46,30 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="bg-muted flex min-h-svh flex-col items-center justify-center p-6 md:p-10">
-      <div className="flex w-full max-w-sm flex-col gap-6 md:max-w-3xl">
-        <Link
-          href="/"
-          className="flex items-center gap-3 self-center font-medium"
-        >
-          <div className="bg-primary text-primary-foreground flex size-10 items-center justify-center rounded-md">
-            <Image
-              width={50}
-              height={50}
-              src={"/images/better-auth-starter.png"}
-              alt="Better Auth Starter Logo"
-              className="rounded-md dark:invert"
-              priority
-            />
-          </div>
-          {/* TODO: Add name and Logo */}
-          <span className="text-3xl font-bold">Balance Box</span>
-        </Link>
-        <LoginForm />
+    <>
+      <div className="mx-auto border-x border-edge md:max-w-5xl">
+        <div
+          className={cn(
+            "h-8 px-2",
+            "screen-line-after",
+            "before:absolute before:-left-[100vw] before:-z-1 before:h-full before:w-[200vw]",
+            "before:bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] before:bg-size-[10px_10px] before:[--pattern-foreground:var(--color-edge)]/56"
+          )}
+        />
+
+        <div className="h-[551px]">
+          <div className="bg-red-950"></div>
+        </div>
+
+        <div
+          className={cn(
+            "h-8 px-2",
+            "screen-line-before",
+            "after:absolute after:-left-[100vw] after:-z-1 after:h-full after:w-[200vw]",
+            "after:bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] after:bg-size-[10px_10px] after:[--pattern-foreground:var(--color-edge)]/56"
+          )}
+        />
       </div>
-    </div>
+    </>
   );
 }
