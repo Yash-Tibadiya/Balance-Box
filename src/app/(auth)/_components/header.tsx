@@ -38,7 +38,7 @@ export function Header() {
       </div>
 
       <div className="max-w-screen overflow-x-hidden px-2">
-        <div className="mx-auto border-x border-edge md:max-w-5xl">
+        <div className="mx-auto md:max-w-5xl">
           <div
             className={cn(
               "h-8 px-2",
