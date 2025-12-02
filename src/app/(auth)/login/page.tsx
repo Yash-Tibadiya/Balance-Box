@@ -46,12 +46,8 @@ export default function LoginPage() {
   }
 
   return (
-    <>
-      <div className="mx-auto border-x border-edge md:max-w-5xl">
-        <div className="h-[551px]">
-          <div className="bg-red-950"></div>
-        </div>
-      </div>
-    </>
+    <div className="mx-auto min-h-[calc(100svh-11rem)] border-x border-edge md:max-w-5xl bg-red-950">
+      hi
+    </div>
   );
 }
