@@ -3,8 +3,8 @@ import { cn } from "@/lib/utils";
 export function Footer() {
   return (
     <>
-      <div className="max-w-screen overflow-x-hidden px-2">
-        <div className="mx-auto md:max-w-5xl">
+      <div className="max-w-screen overflow-x-hidden px-2 relative">
+        <div className="mx-auto md:max-w-5xl relative">
           <div
             className={cn(
               "h-8 px-2",
@@ -13,6 +13,22 @@ export function Footer() {
               "after:bg-[repeating-linear-gradient(315deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] after:bg-size-[10px_10px] after:[--pattern-foreground:var(--color-edge)]/56"
             )}
           />
+
+          {/* Left intersection pattern */}
+          <div
+            className="pointer-events-none absolute top-0 left-px -translate-x-full h-8 w-8 -z-1"
+            aria-hidden="true"
+          >
+            <div className="h-full w-full border-x border-edge bg-[repeating-linear-gradient(45deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] bg-size-[10px_10px] [--pattern-foreground:var(--color-edge)]/56" />
+          </div>
+
+          {/* Right intersection pattern */}
+          <div
+            className="pointer-events-none absolute top-0 right-px translate-x-full h-8 w-8 -z-1"
+            aria-hidden="true"
+          >
+            <div className="h-full w-full border-x border-edge bg-[repeating-linear-gradient(45deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] bg-size-[10px_10px] [--pattern-foreground:var(--color-edge)]/56" />
+          </div>
         </div>
       </div>
 
