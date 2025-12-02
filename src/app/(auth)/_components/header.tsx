@@ -16,6 +16,18 @@ export function Header() {
           className="screen-line-before screen-line-after mx-auto flex h-12 items-center justify-between gap-2 border-x border-edge px-2 after:z-1 after:transition-[background-color] sm:gap-4 md:max-w-5xl"
           data-header-container
         >
+          {/* Left vertical design strip */}
+          <div
+            className="border-l border-edge pointer-events-none absolute inset-y-0 left-0 -translate-x-full w-8 bg-[repeating-linear-gradient(45deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] bg-size-[10px_10px] [--pattern-foreground:var(--color-edge)]/56"
+            aria-hidden="true"
+          />
+
+          {/* Right vertical design strip */}
+          <div
+            className="border-r border-edge pointer-events-none absolute inset-y-0 right-0 translate-x-full w-8 bg-[repeating-linear-gradient(45deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] bg-size-[10px_10px] [--pattern-foreground:var(--color-edge)]/56"
+            aria-hidden="true"
+          />
+          
           <div className="flex-1" />
 
           <div className="flex items-center *:first:mr-2">

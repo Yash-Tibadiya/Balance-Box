@@ -46,8 +46,21 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="mx-auto min-h-[calc(100svh-11rem)] border-x border-edge md:max-w-5xl bg-red-950">
-      hi
+    <div className="relative mx-auto min-h-[calc(100svh-11rem)] md:max-w-5xl border-x border-edge">
+      {/* Left vertical design strip */}
+      <div
+        className="border-l border-edge pointer-events-none absolute inset-y-0 left-0 -translate-x-full w-8 bg-[repeating-linear-gradient(45deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] bg-size-[10px_10px] [--pattern-foreground:var(--color-edge)]/56"
+        aria-hidden="true"
+      />
+
+      {/* Right vertical design strip */}
+      <div
+        className="border-r border-edge pointer-events-none absolute inset-y-0 right-0 translate-x-full w-8 bg-[repeating-linear-gradient(45deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] bg-size-[10px_10px] [--pattern-foreground:var(--color-edge)]/56"
+        aria-hidden="true"
+      />
+
+      {/* Main content box */}
+      <div className="min-h-inherit border-x border-edge bg-red-950">hi</div>
     </div>
   );
 }
