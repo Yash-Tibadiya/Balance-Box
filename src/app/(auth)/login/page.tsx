@@ -6,6 +6,7 @@ import { authClient } from "@/lib/auth-client";
 import { checkCurrentUserBusinessInfo } from "@/models/users-actions";
 import { LoginForm } from "../_components/login-form";
 import { cn } from "@/lib/utils";
+import LoginHeroPanel from "../_components/login-hero-panel";
 
 export default function LoginPage() {
   const [loading, setLoading] = useState(true);
@@ -46,6 +47,12 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-inherit border-x border-edge bg-red-950">hi</div>
+    <div className="grid grid-cols-2 min-h-[calc(100svh-11rem)] h-full w-full">
+      <div className="flex items-center justify-center h-full w-full bg-accent dark:bg-neutral-900"></div>
+
+      <div className="flex items-center justify-center h-full w-full p-2 bg-linear-to-br from-white dark:from-[#141414] to-accent dark:to-neutral-950 relative">
+        <LoginHeroPanel />
+      </div>
+    </div>
   );
 }
