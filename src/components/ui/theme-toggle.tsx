@@ -1,14 +1,15 @@
 "use client";
 
 import type React from "react";
-
 import { useEffect, useState } from "react";
 import { Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useThemeTransition } from "@/hooks/use-theme-transition";
+import { useTheme } from "next-themes";
 
 export function ThemeToggle() {
-  const [theme, setTheme] = useState<"light" | "dark">("light");
+  const { theme, setTheme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
   const { transitionTheme, triggerRef } = useThemeTransition({
     variant: "circle-blur",
     position: "top-right",
@@ -17,15 +18,18 @@ export function ThemeToggle() {
   });
 
   useEffect(() => {
-    const isDark = document.documentElement.classList.contains("dark");
-    setTheme(isDark ? "dark" : "light");
+    setMounted(true);
   }, []);
+
+  // Avoid hydration mismatch: wait until mounted to read theme
+  if (!mounted) return null;
+
+  const currentTheme = theme === "system" ? resolvedTheme : theme;
+  const isDark = currentTheme === "dark";
 
   const toggleTheme = () => {
     transitionTheme(() => {
-      const newTheme = theme === "light" ? "dark" : "light";
-      document.documentElement.classList.toggle("dark", newTheme === "dark");
-      setTheme(newTheme);
+      setTheme(isDark ? "light" : "dark");
     });
   };
 
@@ -35,13 +39,9 @@ export function ThemeToggle() {
       variant="outline"
       size="icon"
       onClick={toggleTheme}
-      aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
+      aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}
     >
-      {theme === "light" ? (
-        <Sun className="h-5 w-5" />
-      ) : (
-        <Moon className="h-5 w-5" />
-      )}
+      {isDark ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
     </Button>
   );
 }
