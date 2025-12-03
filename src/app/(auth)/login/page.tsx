@@ -46,9 +46,9 @@ export default function LoginPage() {
 
   return (
     <div className="grid grid-cols-2 min-h-[calc(100svh-11rem)] h-full w-full">
-      <div className="flex items-center justify-center h-full w-full bg-accent dark:bg-neutral-900"></div>
+      <div className="flex items-center justify-center h-full w-full bg-zinc-200/70 dark:bg-neutral-900"></div>
 
-      <div className="flex items-center justify-center h-full w-full p-2 bg-linear-to-br from-white dark:from-[#141414] to-accent dark:to-neutral-950 relative">
+      <div className="flex items-center justify-center h-full w-full bg-linear-to-br from-white dark:from-[#141414] to-accent dark:to-neutral-950 relative">
         <LoginHeroPanel />
       </div>
     </div>
