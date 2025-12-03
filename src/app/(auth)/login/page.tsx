@@ -38,10 +38,8 @@ export default function LoginPage() {
 
   if (loading) {
     return (
-      <div className="flex min-h-svh flex-col items-center justify-center p-6 md:p-10">
-        <div className="text-center">
-          <p className="text-muted-foreground">Loading...</p>
-        </div>
+      <div className="flex min-h-[calc(100svh-11rem)] flex-col items-center justify-center p-6 md:p-10">
+        <div className="loader-bar"></div>
       </div>
     );
   }
