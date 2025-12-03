@@ -2,7 +2,9 @@
 
 import type React from "react";
 import { useEffect, useState } from "react";
-import { Moon, Sun } from "lucide-react";
+// import { Moon, Sun } from "lucide-react";
+import { MoonIcon } from "./moon";
+import { SunIcon } from "./sun";
 import { Button } from "@/components/ui/button";
 import { useThemeTransition } from "@/hooks/use-theme-transition";
 import { useTheme } from "next-themes";
@@ -41,7 +43,11 @@ export function ThemeToggle() {
       onClick={toggleTheme}
       aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}
     >
-      {isDark ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
+      {isDark ? (
+        <MoonIcon className="relative hidden after:absolute after:-inset-2 [html.dark_&]:block" />
+      ) : (
+        <SunIcon className="relative hidden after:absolute after:-inset-2 [html.light_&]:block" />
+      )}
     </Button>
   );
 }
