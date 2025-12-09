@@ -12,7 +12,7 @@ const LoginHeroPanel = () => {
         )}
       />
 
-      <div className="flex items-center justify-end h-full w-full relative">
+      <div className="flex items-center justify-center lg:justify-end h-full w-full relative py-6 lg:py-0 px-4 lg:px-0">
         <Image
           src="/images/loginHeroLight.png"
           alt="Login Hero"
