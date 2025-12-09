@@ -46,7 +46,7 @@ export default function LoginPage() {
 
   return (
     <div className="flex flex-col lg:flex-row min-h-[calc(100svh-11rem)] h-full w-full">
-      <div className="flex items-center justify-center h-full w-full bg-zinc-200/70 dark:bg-neutral-900">
+      <div className="flex items-center justify-center w-full bg-zinc-200/70 dark:bg-neutral-900">
         <LoginForm />
       </div>
 
