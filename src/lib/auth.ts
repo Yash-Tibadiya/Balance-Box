@@ -24,6 +24,7 @@ export const auth = betterAuth({
   plugins: [
     nextCookies(),
     emailOTP({
+      expiresIn: 10 * 60 * 1000, // 15 minutes
       async sendVerificationOTP({ email, otp, type }) {
         const subject =
           type === "sign-in"
@@ -43,7 +44,7 @@ export const auth = betterAuth({
               <div style="background-color: #f4f4f4; padding: 20px; text-align: center; font-size: 32px; font-weight: bold; letter-spacing: 8px; margin: 20px 0;">
                 ${otp}
               </div>
-              <p>This code will expire in 5 minutes.</p>
+              <p>This code will expire in 10 minutes.</p>
               <p>If you didn't request this code, please ignore this email.</p>
             </div>
           `,
