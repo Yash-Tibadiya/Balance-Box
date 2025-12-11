@@ -5,8 +5,10 @@ import { hasBusinessInfo } from "@/models/users";
 export default async function proxy(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
-  // Check for session cookie
-  const sessionCookie = request.cookies.get("better-auth.session_token");
+  // Check for session cookie - Better Auth uses __Secure- prefix on HTTPS
+  const sessionCookie =
+    request.cookies.get("better-auth.session_token") ||
+    request.cookies.get("__Secure-better-auth.session_token");
 
   // Paths that don't require authentication
   const publicPaths = ["/home", "/login"];
