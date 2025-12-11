@@ -9,6 +9,7 @@ import { drizzleAdapter } from "better-auth/adapters/drizzle";
 const resend = new Resend(config.resendApiKey);
 
 export const auth = betterAuth({
+  baseURL: config.baseURL,
   socialProviders: {
     google: {
       clientId: config.googleClientId as string,
