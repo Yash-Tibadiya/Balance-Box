@@ -11,6 +11,7 @@ import {
   InputGroupAddon,
   InputGroupInput,
 } from "@/components/ui/input-group";
+import { PhoneInput } from "@/components/ui/phone-input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { updateCurrentUserBusinessInfo } from "@/models/users-actions";
@@ -104,13 +105,14 @@ export function BusinessInfoForm({
           <Label htmlFor="phone" className={labelClassName}>
             Phone Number
           </Label>
-          <Input
+          <PhoneInput
             id="phone"
-            type="tel"
             required
             placeholder="+91 1234567890"
             value={formData.phone}
-            onChange={(e) => handleChange("phone", e.target.value)}
+            onChange={(value) => handleChange("phone", value || "")}
+            defaultCountry="IN"
+            international
             className={inputClassName}
           />
         </div>
