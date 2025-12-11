@@ -10,6 +10,10 @@ const resend = new Resend(config.resendApiKey);
 
 export const auth = betterAuth({
   baseURL: config.baseURL,
+  trustedOrigins: [
+    config.baseURL as string,
+    "https://balance-box-amber.vercel.app",
+  ],
   socialProviders: {
     google: {
       clientId: config.googleClientId as string,
