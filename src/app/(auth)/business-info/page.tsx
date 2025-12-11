@@ -1,13 +1,11 @@
 "use client";
 
-import { BusinessInfoForm } from "@/app/(auth)/_components/business-info-form";
-import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
-import { checkCurrentUserBusinessInfo } from "@/models/users-actions";
 import LoginHeroPanel from "../_components/login-hero-panel";
+import { checkCurrentUserBusinessInfo } from "@/models/users-actions";
+import { BusinessInfoForm } from "@/app/(auth)/_components/business-info-form";
 
 export default function BusinessInfoPage() {
   const [loading, setLoading] = useState(true);

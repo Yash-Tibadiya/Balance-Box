@@ -1,10 +1,10 @@
-import { betterAuth } from "better-auth";
-import { drizzleAdapter } from "better-auth/adapters/drizzle";
-import { db } from "@/drizzle/db";
-import { nextCookies } from "better-auth/next-js";
-import { emailOTP } from "better-auth/plugins";
-import { config } from "@/config/config";
 import { Resend } from "resend";
+import { db } from "@/drizzle/db";
+import { betterAuth } from "better-auth";
+import { config } from "@/config/config";
+import { emailOTP } from "better-auth/plugins";
+import { nextCookies } from "better-auth/next-js";
+import { drizzleAdapter } from "better-auth/adapters/drizzle";
 
 const resend = new Resend(config.resendApiKey);
 

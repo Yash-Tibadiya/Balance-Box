@@ -3,10 +3,9 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
-import { checkCurrentUserBusinessInfo } from "@/models/users-actions";
 import { LoginForm } from "../_components/login-form";
-import { cn } from "@/lib/utils";
 import LoginHeroPanel from "../_components/login-hero-panel";
+import { checkCurrentUserBusinessInfo } from "@/models/users-actions";
 
 export default function LoginPage() {
   const [loading, setLoading] = useState(true);

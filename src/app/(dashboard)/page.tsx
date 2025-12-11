@@ -1,10 +1,10 @@
 "use client";
 
+import { LogOut } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
 import { Button } from "@/components/ui/button";
-import { useRouter } from "next/navigation";
-import { LogOut } from "lucide-react";
 
 interface Session {
   user: {

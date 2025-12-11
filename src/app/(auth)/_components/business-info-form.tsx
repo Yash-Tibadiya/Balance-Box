@@ -1,19 +1,19 @@
 "use client";
 
-import { toast } from "sonner";
-import { cn } from "@/lib/utils";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { LoaderCircle, Building2, MapPin } from "lucide-react";
-import { Input } from "@/components/ui/input";
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
 } from "@/components/ui/input-group";
-import { PhoneInput } from "@/components/ui/phone-input";
+import { toast } from "sonner";
+import { cn } from "@/lib/utils";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
+import { PhoneInput } from "@/components/ui/phone-input";
+import { LoaderCircle, Building2, MapPin } from "lucide-react";
 import { updateCurrentUserBusinessInfo } from "@/models/users-actions";
 
 export function BusinessInfoForm({
