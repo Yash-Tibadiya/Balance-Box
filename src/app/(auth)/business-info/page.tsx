@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
 import LoginHeroPanel from "../_components/login-hero-panel";
-import { checkCurrentUserBusinessInfo } from "@/models/users-actions";
 import { BusinessInfoForm } from "@/app/(auth)/_components/business-info-form";
 
 export default function BusinessInfoPage() {
@@ -20,14 +19,8 @@ export default function BusinessInfoPage() {
           router.push("/login");
           return;
         }
-
-        // Check if business info is already completed using model function
-        const hasInfo = await checkCurrentUserBusinessInfo();
-
-        if (hasInfo) {
-          // Business info already completed, redirect to home
-          router.push("/");
-        }
+        // Proxy middleware will handle business info check
+        // If user already has business info, proxy will redirect them
       } catch (error) {
         console.error("Error checking session:", error);
         router.push("/login");

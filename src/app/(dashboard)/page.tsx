@@ -23,14 +23,11 @@ const Dashboard = () => {
     const getSession = async () => {
       try {
         const { data } = await authClient.getSession();
-        if (!data) {
-          router.push("/home");
-        } else {
+        if (data) {
           setSession(data);
         }
       } catch (error) {
         console.error("Error fetching session:", error);
-        router.push("/home");
       } finally {
         setLoading(false);
       }

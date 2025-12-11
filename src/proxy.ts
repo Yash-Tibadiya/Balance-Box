@@ -51,6 +51,28 @@ export default async function proxy(request: NextRequest) {
     return NextResponse.next();
   }
 
+  // If authenticated user is accessing /business-info, check if they already completed it
+  if (sessionCookie && pathname === "/business-info") {
+    try {
+      const session = await auth.api.getSession({
+        headers: request.headers,
+      });
+      if (session?.user) {
+        const completed = await hasBusinessInfo(session.user.id);
+        // If business info is already complete, redirect to home
+        if (completed) {
+          return NextResponse.redirect(new URL("/", request.url));
+        }
+        // Otherwise, allow access to business-info page
+        return NextResponse.next();
+      }
+    } catch (error) {
+      // If error checking, allow access to business-info page
+      console.error("Error checking business info for /business-info:", error);
+      return NextResponse.next();
+    }
+  }
+
   // If user is authenticated, check business info for protected paths (except business-info page and API routes)
   if (
     sessionCookie &&
