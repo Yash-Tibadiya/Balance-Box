@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
 import { checkCurrentUserBusinessInfo } from "@/models/users-actions";
+import LoginHeroPanel from "../_components/login-hero-panel";
 
 export default function BusinessInfoPage() {
   const [loading, setLoading] = useState(true);
@@ -42,35 +43,20 @@ export default function BusinessInfoPage() {
 
   if (loading) {
     return (
-      <div className="flex min-h-svh flex-col items-center justify-center p-6 md:p-10">
-        <div className="text-center">
-          <p className="text-muted-foreground">Loading...</p>
-        </div>
+      <div className="flex min-h-[calc(100svh-11rem)] flex-col items-center justify-center p-6 md:p-10">
+        <div className="loader-bar"></div>
       </div>
     );
   }
 
   return (
-    <div className="bg-muted flex min-h-svh flex-col items-center justify-center p-6 md:p-10">
-      <div className="flex w-full max-w-sm flex-col gap-6 md:max-w-3xl">
-        <Link
-          href="/"
-          className="flex items-center gap-3 self-center font-medium"
-        >
-          <div className="bg-primary text-primary-foreground flex size-10 items-center justify-center rounded-md">
-            <Image
-              width={50}
-              height={50}
-              src={"/images/better-auth-starter.png"}
-              alt="Better Auth Starter Logo"
-              className="rounded-md dark:invert"
-              priority
-            />
-          </div>
-          {/* TODO: Add name and Logo */}
-          <span className="text-3xl font-bold">Balance Box</span>
-        </Link>
+    <div className="flex flex-col lg:flex-row min-h-[calc(100svh-11rem)] h-full w-full">
+      <div className="flex items-center justify-center w-full bg-zinc-200/70 dark:bg-neutral-900">
         <BusinessInfoForm />
+      </div>
+
+      <div className="flex items-center justify-center w-full bg-linear-to-br from-white dark:from-[#141414] to-accent dark:to-neutral-950 relative">
+        <LoginHeroPanel />
       </div>
     </div>
   );
