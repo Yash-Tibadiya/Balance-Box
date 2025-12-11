@@ -210,18 +210,18 @@ export function LoginForm({
         </form>
       )}
 
-      <div className="text-muted-foreground text-center text-xs text-balance border-neutral-800">
+      <div className="text-neutral-600 text-center text-xs text-balance border-neutral-800">
         By signing up, you agree to our{" "}
         <Link
           href="/"
-          className="underline underline-offset-2 hover:text-foreground transition-colors"
+          className="underline underline-offset-2 hover:text-white/70 transition-colors"
         >
           Terms of Service{" "}
         </Link>
         and{" "}
         <Link
           href="/"
-          className="underline underline-offset-2 hover:text-foreground transition-colors"
+          className="underline underline-offset-2 hover:text-white/70 transition-colors"
         >
           Privacy Policy
         </Link>

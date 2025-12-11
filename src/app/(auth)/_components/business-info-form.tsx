@@ -60,7 +60,7 @@ export function BusinessInfoForm({
   const inputClassName =
     "bg-background dark:bg-neutral-800/50 border-input dark:border-neutral-700 text-foreground dark:text-white placeholder:text-muted-foreground focus:border-ring focus:ring-ring h-10 rounded-lg text-sm";
   const labelClassName =
-    "text-xs font-medium uppercase tracking-wider text-muted-foreground ml-1";
+    "text-xs font-medium tracking-wider ml-1 text-foreground";
 
   return (
     <div
@@ -71,10 +71,7 @@ export function BusinessInfoForm({
       {...props}
     >
       <div className="flex flex-col items-center text-center space-y-1">
-        <h1 className="text-lg font-bold text-foreground">Business Details</h1>
-        <p className="text-muted-foreground text-xs">
-          Please enter your business information below
-        </p>
+        <h1 className="text-xl font-bold text-foreground">Business Details</h1>
       </div>
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
