@@ -32,9 +32,9 @@ export function LoginForm({
   const router = useRouter();
 
   const otpSlotClassName = cn(
-    "dark:bg-neutral-800/50 dark:border-neutral-700 dark:text-white w-full",
-    "bg-neutral-800/50 border-neutral-700 text-white",
-    "data-[active=true]:border-neutral-600 data-[active=true]:ring-neutral-600/50"
+    "w-full border-input bg-background text-foreground",
+    "dark:bg-neutral-800/50 dark:border-neutral-700 dark:text-white",
+    "data-[active=true]:border-ring data-[active=true]:ring-ring"
   );
 
   const requestOtp = async (e: React.FormEvent) => {
@@ -103,7 +103,7 @@ export function LoginForm({
   return (
     <div className="flex flex-col justify-center min-h-full w-full max-w-sm mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12 gap-6">
       <div className="flex flex-col items-center text-center">
-        <h1 className="text-lg font-bold text-white mb-2">
+        <h1 className="text-lg font-bold text-foreground mb-2">
           Welcome to the future of finance
         </h1>
       </div>
@@ -112,7 +112,7 @@ export function LoginForm({
         <Button
           variant="default"
           type="button"
-          className="w-full bg-white hover:bg-white/80 text-black font-semibold h-10 rounded-lg transition-colors"
+          className="w-full bg-white hover:bg-neutral-100 text-black border border-input font-semibold h-10 rounded-lg transition-colors"
           onClick={signInWithGoogle}
           disabled={isGoogleLoading}
         >
@@ -127,14 +127,14 @@ export function LoginForm({
         </Button>
       </div>
 
-      <div className="flex border border-[#222222] mt-3"></div>
+      <div className="flex border border-border mt-3"></div>
 
       {stage === "email" ? (
         <form onSubmit={requestOtp} className="grid gap-6">
           <Field>
             <FieldLabel
               htmlFor="email"
-              className="text-white text-sm font-medium"
+              className="text-foreground text-sm font-medium"
             >
               Email
             </FieldLabel>
@@ -145,14 +145,14 @@ export function LoginForm({
               placeholder="m@example.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="bg-neutral-800/50 border-neutral-700 text-white placeholder:text-neutral-400 focus:border-neutral-600 focus:ring-neutral-600 h-11 rounded-lg"
+              className="bg-background dark:bg-neutral-800/50 border-input dark:border-neutral-700 text-foreground dark:text-white placeholder:text-muted-foreground focus:border-ring focus:ring-ring h-11 rounded-lg"
             />
             {error && <FieldError className="text-red-400">{error}</FieldError>}
           </Field>
           <Button
-            variant="secondary"
+            variant="default"
             type="submit"
-            className="w-full bg-neutral-200 hover:bg-neutral-300 text-neutral-900 font-medium h-11 rounded-lg transition-colors"
+            className="w-full font-semibold h-11 rounded-lg transition-colors"
             disabled={loading || !email}
           >
             {loading ? (
@@ -165,7 +165,7 @@ export function LoginForm({
       ) : (
         <form onSubmit={verifyCode} className="grid gap-6">
           <Field>
-            <FieldLabel className="text-white text-sm font-medium">
+            <FieldLabel className="text-foreground text-sm font-medium">
               6-digit code
             </FieldLabel>
             <InputOTP
@@ -186,9 +186,9 @@ export function LoginForm({
             {error && <FieldError className="text-red-400">{error}</FieldError>}
           </Field>
           <Button
-            variant="secondary"
+            variant="default"
             type="submit"
-            className="w-full bg-neutral-200 hover:bg-neutral-300 text-neutral-900 font-medium h-10 rounded-lg transition-colors"
+            className="w-full font-semibold h-11 rounded-lg transition-colors"
             disabled={loading || code.length !== 6}
           >
             {loading ? (
@@ -197,12 +197,12 @@ export function LoginForm({
               "Verify and Login"
             )}
           </Button>
-          <div className="text-center text-sm text-white/70">
+          <div className="text-center text-sm text-muted-foreground">
             Use a different{" "}
             <button
               type="button"
               onClick={resetToEmail}
-              className="underline underline-offset-2 text-white font-medium hover:text-white/80"
+              className="underline underline-offset-2 text-foreground font-medium hover:text-foreground/80"
             >
               Email
             </button>
@@ -210,18 +210,18 @@ export function LoginForm({
         </form>
       )}
 
-      <div className="text-neutral-600 text-center text-xs text-balance border-neutral-800">
+      <div className="text-muted-foreground text-center text-xs text-balance border-neutral-800">
         By signing up, you agree to our{" "}
         <Link
           href="/"
-          className="underline underline-offset-2 hover:text-white/70 transition-colors"
+          className="underline underline-offset-2 hover:text-foreground transition-colors"
         >
           Terms of Service{" "}
         </Link>
         and{" "}
         <Link
           href="/"
-          className="underline underline-offset-2 hover:text-white/70 transition-colors"
+          className="underline underline-offset-2 hover:text-foreground transition-colors"
         >
           Privacy Policy
         </Link>

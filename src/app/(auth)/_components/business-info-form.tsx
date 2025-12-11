@@ -58,9 +58,9 @@ export function BusinessInfoForm({
   };
 
   const inputClassName =
-    "bg-neutral-800/50 border-neutral-700 text-white placeholder:text-neutral-500 focus:border-neutral-500 focus:ring-neutral-500 h-10 rounded-lg text-sm";
+    "bg-background dark:bg-neutral-800/50 border-input dark:border-neutral-700 text-foreground dark:text-white placeholder:text-muted-foreground focus:border-ring focus:ring-ring h-10 rounded-lg text-sm";
   const labelClassName =
-    "text-white text-xs font-medium uppercase tracking-wider text-neutral-400 ml-1";
+    "text-xs font-medium uppercase tracking-wider text-muted-foreground ml-1";
 
   return (
     <div
@@ -71,8 +71,8 @@ export function BusinessInfoForm({
       {...props}
     >
       <div className="flex flex-col items-center text-center space-y-1">
-        <h1 className="text-lg font-bold text-white">Business Details</h1>
-        <p className="text-neutral-400 text-xs">
+        <h1 className="text-lg font-bold text-foreground">Business Details</h1>
+        <p className="text-muted-foreground text-xs">
           Please enter your business information below
         </p>
       </div>
@@ -101,7 +101,7 @@ export function BusinessInfoForm({
             id="phone"
             type="tel"
             required
-            placeholder="+1234567890"
+            placeholder="+91 1234567890"
             value={formData.phone}
             onChange={(e) => handleChange("phone", e.target.value)}
             className={inputClassName}
@@ -190,9 +190,9 @@ export function BusinessInfoForm({
         {error && <div className="text-red-400 text-sm">{error}</div>}
 
         <Button
-          variant="secondary"
+          variant="default"
           type="submit"
-          className="w-full bg-white hover:bg-neutral-200 text-black font-semibold h-10 rounded-lg transition-colors mt-2"
+          className="w-full font-semibold h-10 rounded-lg transition-colors mt-2"
           disabled={loading}
         >
           {loading ? (
