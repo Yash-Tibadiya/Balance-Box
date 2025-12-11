@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { DotPattern } from "@/components/ui/dot-pattern";
 import { cn } from "@/lib/utils";
+import { DotPattern } from "@/components/ui/dot-pattern";
 
 const LoginHeroPanel = () => {
   return (

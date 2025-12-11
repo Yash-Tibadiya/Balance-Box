@@ -1,23 +1,26 @@
 "use client";
 
-import { useState } from "react";
-import { cn } from "@/lib/utils";
-import { Input } from "@/components/ui/input";
-import { SvgGoogleIcon } from "../../../components/icons/Icons";
-import { Card, CardContent } from "@/components/ui/card";
-import { LoaderCircle } from "lucide-react";
-import { toast } from "sonner";
-import { useRouter } from "next/navigation";
-import { authClient } from "@/lib/auth-client";
-import Link from "next/link";
-import Image from "next/image";
 import {
   InputOTP,
   InputOTPGroup,
   InputOTPSlot,
 } from "@/components/ui/input-otp";
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+} from "@/components/ui/input-group";
+import Link from "next/link";
+import { toast } from "sonner";
+import { cn } from "@/lib/utils";
+import { useState } from "react";
+import { Mail } from "lucide-react";
+import { LoaderCircle } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { authClient } from "@/lib/auth-client";
+import { Button } from "@/components/ui/button";
+import { SvgGoogleIcon } from "@/components/icons/Icons";
 import { Field, FieldLabel, FieldError } from "@/components/ui/field";
-import { Button } from "../../../components/ui/button";
 
 export function LoginForm({
   className,
@@ -138,15 +141,20 @@ export function LoginForm({
             >
               Email
             </FieldLabel>
-            <Input
-              id="email"
-              type="email"
-              required
-              placeholder="m@example.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="bg-background dark:bg-neutral-800/50 border-input dark:border-neutral-700 text-foreground dark:text-white placeholder:text-muted-foreground focus:border-ring focus:ring-ring h-11 rounded-lg"
-            />
+            <InputGroup className="bg-background dark:bg-neutral-800/50 border-input dark:border-neutral-700 h-11 rounded-lg">
+              <InputGroupInput
+                id="email"
+                type="email"
+                required
+                placeholder="m@example.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="text-foreground dark:text-white placeholder:text-muted-foreground"
+              />
+              <InputGroupAddon>
+                <Mail className="size-5" />
+              </InputGroupAddon>
+            </InputGroup>
             {error && <FieldError className="text-red-400">{error}</FieldError>}
           </Field>
           <Button

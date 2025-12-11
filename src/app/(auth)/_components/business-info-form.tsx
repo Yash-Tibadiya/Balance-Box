@@ -1,13 +1,18 @@
 "use client";
 
-import { useState } from "react";
-import { cn } from "@/lib/utils";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { LoaderCircle } from "lucide-react";
 import { toast } from "sonner";
+import { cn } from "@/lib/utils";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Button } from "../../../components/ui/button";
+import { LoaderCircle, Building2, MapPin } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+} from "@/components/ui/input-group";
+import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
 import { updateCurrentUserBusinessInfo } from "@/models/users-actions";
 
 export function BusinessInfoForm({
@@ -79,15 +84,20 @@ export function BusinessInfoForm({
           <Label htmlFor="businessName" className={labelClassName}>
             Business Name
           </Label>
-          <Input
-            id="businessName"
-            type="text"
-            required
-            placeholder="Your Business Name"
-            value={formData.businessName}
-            onChange={(e) => handleChange("businessName", e.target.value)}
-            className={inputClassName}
-          />
+          <InputGroup className="bg-background dark:bg-neutral-800/50 border-input dark:border-neutral-700 h-10 rounded-lg">
+            <InputGroupInput
+              id="businessName"
+              type="text"
+              required
+              placeholder="Your Business Name"
+              value={formData.businessName}
+              onChange={(e) => handleChange("businessName", e.target.value)}
+              className="text-foreground dark:text-white placeholder:text-muted-foreground"
+            />
+            <InputGroupAddon>
+              <Building2 className="size-4" />
+            </InputGroupAddon>
+          </InputGroup>
         </div>
 
         <div className="space-y-1.5">
@@ -109,15 +119,20 @@ export function BusinessInfoForm({
           <Label htmlFor="businessAddress" className={labelClassName}>
             Business Address
           </Label>
-          <Input
-            id="businessAddress"
-            type="text"
-            required
-            placeholder="Street Address"
-            value={formData.businessAddress}
-            onChange={(e) => handleChange("businessAddress", e.target.value)}
-            className={inputClassName}
-          />
+          <InputGroup className="bg-background dark:bg-neutral-800/50 border-input dark:border-neutral-700 h-10 rounded-lg">
+            <InputGroupInput
+              id="businessAddress"
+              type="text"
+              required
+              placeholder="Street Address"
+              value={formData.businessAddress}
+              onChange={(e) => handleChange("businessAddress", e.target.value)}
+              className="text-foreground dark:text-white placeholder:text-muted-foreground"
+            />
+            <InputGroupAddon>
+              <MapPin className="size-4" />
+            </InputGroupAddon>
+          </InputGroup>
         </div>
 
         <div className="grid grid-cols-2 gap-3">
