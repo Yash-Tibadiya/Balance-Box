@@ -63,7 +63,7 @@ const InputComponent = React.forwardRef<
   React.ComponentProps<"input">
 >(({ className, ...props }, ref) => (
   <Input
-    className={cn("rounded-e-lg rounded-s-none", className)}
+    className={cn("rounded-e-lg rounded-s-none h-10", className)}
     {...props}
     ref={ref}
   />
@@ -102,7 +102,7 @@ const CountrySelect = ({
         <Button
           type="button"
           variant="outline"
-          className="flex gap-1 rounded-e-none rounded-s-lg border-r-0 px-3 focus:z-10"
+          className="flex gap-1 rounded-e-none rounded-s-lg border-r-0 px-3 focus:z-10 h-10"
           disabled={disabled}
         >
           <FlagComponent
@@ -117,7 +117,7 @@ const CountrySelect = ({
           />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[300px] mt-1 ml-10 sm:ml-38 md:ml-52 lg:ml-21 xl:ml-52 2xl:ml-60">
+      <PopoverContent className="w-[300px] mt-1 ml-10 sm:ml-38 md:ml-52 lg:ml-21 xl:ml-52 2xl:ml-60 p-1">
         <Command>
           <CommandInput
             value={searchValue}
