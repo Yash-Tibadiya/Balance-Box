@@ -2,12 +2,15 @@
 
 import { useRef, useEffect, useState } from "react";
 import Link from "next/link";
+import { useTheme } from "next-themes";
 
 export default function NotFound() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const mousePositionRef = useRef({ x: 0, y: 0 });
   const isTouchingRef = useRef(false);
   const [isMobile, setIsMobile] = useState(false);
+  const { resolvedTheme } = useTheme();
+  const isDark = resolvedTheme === "dark";
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -81,7 +84,7 @@ export default function NotFound() {
             baseX: x,
             baseY: y,
             size: Math.random() * 1.5 + 0.5,
-            color: "white",
+            color: isDark ? "white" : "black",
             scatteredColor: randomColor,
             life: Math.random() * 100 + 50,
           };
@@ -109,7 +112,7 @@ export default function NotFound() {
     function animate(scale: number) {
       if (!ctx || !canvas) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = "black";
+      ctx.fillStyle = isDark ? "black" : "white";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       const { x: mouseX, y: mouseY } = mousePositionRef.current;
@@ -136,7 +139,7 @@ export default function NotFound() {
         } else {
           p.x += (p.baseX - p.x) * 0.1;
           p.y += (p.baseY - p.y) * 0.1;
-          ctx.fillStyle = "white";
+          ctx.fillStyle = isDark ? "white" : "black";
         }
 
         ctx.fillRect(p.x, p.y, p.size, p.size);
@@ -223,10 +226,10 @@ export default function NotFound() {
       canvas.removeEventListener("touchend", handleTouchEnd);
       cancelAnimationFrame(animationFrameId);
     };
-  }, [isMobile]);
+  }, [isMobile, isDark]);
 
   return (
-    <div className="relative w-full h-dvh flex flex-col items-center justify-center bg-black">
+    <div className="relative w-full h-dvh flex flex-col items-center justify-center bg-white dark:bg-black">
       <canvas
         ref={canvasRef}
         className="w-full h-full absolute top-0 left-0 touch-none cursor-cell"
