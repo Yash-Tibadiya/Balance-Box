@@ -33,7 +33,7 @@ export default function BusinessInfoPage() {
     checkSession();
   }, [router]);
 
-  if (loading) {
+  if (!loading) {
     return (
       <div className="flex min-h-[calc(100svh-11rem)] flex-col items-center justify-center p-6 md:p-10 dark:bg-black">
         <Image
@@ -42,7 +42,7 @@ export default function BusinessInfoPage() {
           width={100}
           height={100}
           className="dark:invert"
-          unoptimized
+          // unoptimized
         />
       </div>
     );
