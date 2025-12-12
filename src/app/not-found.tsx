@@ -229,16 +229,19 @@ export default function NotFound() {
     <div className="relative w-full h-dvh flex flex-col items-center justify-center bg-black">
       <canvas
         ref={canvasRef}
-        className="w-full h-full absolute top-0 left-0 touch-none"
+        className="w-full h-full absolute top-0 left-0 touch-none cursor-cell"
         aria-label="Interactive particle effect showing 404 error"
       />
       <div className="absolute bottom-[150px] text-center z-10">
         <h1 className="sr-only">404 - Page Not Found</h1>
-        <p className="text-lg font-medium text-muted-foreground md:text-2xl mb-6 px-5 md:px-0">
-          <span className="hover:text-[#ef4444] transition-colors duration-300">
+        <p className="group/text text-lg font-medium text-muted-foreground md:text-2xl mb-6 px-5 md:px-0 cursor-pointer">
+          <span className="group-hover/text:text-[#ef4444] transition-colors duration-300">
             Oops!
           </span>{" "}
-          The page you're looking for doesn't exist.
+          The page you're looking for{" "}
+          <span className="group-hover/text:text-[#ef4444] transition-colors duration-300">
+            doesn't exist.
+          </span>
         </p>
         <Link
           href="/"
