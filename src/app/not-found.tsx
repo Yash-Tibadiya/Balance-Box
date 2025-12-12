@@ -234,7 +234,7 @@ export default function NotFound() {
       />
       <div className="absolute bottom-[150px] text-center z-10">
         <h1 className="sr-only">404 - Page Not Found</h1>
-        <p className="text-xl font-medium text-muted-foreground sm:text-2xl mb-6">
+        <p className="text-lg font-medium text-muted-foreground md:text-2xl mb-6 px-5 md:px-0">
           <span className="hover:text-[#ef4444] transition-colors duration-300">
             Oops!
           </span>{" "}
@@ -242,9 +242,33 @@ export default function NotFound() {
         </p>
         <Link
           href="/"
-          className="inline-block font-mono text-white hover:text-red-500 transition-colors duration-300 px-6 py-3 border border-gray-700 hover:border-red-500 rounded-md"
+          className="group inline-flex items-center gap-3 no-underline border-none cursor-pointer bg-neutral-900 text-white rounded-full font-semibold py-3 px-6 pl-5 whitespace-nowrap overflow-hidden text-ellipsis transition-colors duration-300 hover:bg-[#ef4444]/80"
         >
-          Go Back Home
+          <span className="shrink-0 w-[25px] h-[25px] relative text-neutral-900 bg-white rounded-full grid place-items-center overflow-hidden transition-colors duration-300 group-hover:text-[#ef4444]/80">
+            <svg
+              viewBox="0 0 14 15"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-[10px] transition-transform duration-300 ease-in-out group-hover:translate-x-[150%] group-hover:-translate-y-[150%]"
+            >
+              <path
+                d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"
+                fill="currentColor"
+              />
+            </svg>
+            <svg
+              viewBox="0 0 14 15"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-[10px] absolute -translate-x-[150%] translate-y-[150%] transition-transform duration-300 ease-in-out delay-100 group-hover:translate-x-0 group-hover:translate-y-0"
+            >
+              <path
+                d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"
+                fill="currentColor"
+              />
+            </svg>
+          </span>
+          Go Home
         </Link>
       </div>
     </div>
