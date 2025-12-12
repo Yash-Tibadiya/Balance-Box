@@ -36,7 +36,7 @@ export default function LoginPage() {
     checkSession();
   }, [router]);
 
-  if (!loading) {
+  if (loading) {
     return (
       <div className="flex min-h-[calc(100svh-11rem)] flex-col items-center justify-center p-6 md:p-10 dark:bg-black">
         <Image
