@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
+import Image from "next/image";
 
 export function Header() {
   return (
@@ -26,6 +27,15 @@ export function Header() {
           <div
             className="border-r border-edge pointer-events-none absolute inset-y-0 right-0 translate-x-full w-8 bg-[repeating-linear-gradient(45deg,var(--pattern-foreground)_0,var(--pattern-foreground)_1px,transparent_0,transparent_50%)] bg-size-[10px_10px] [--pattern-foreground:var(--color-edge)]/56"
             aria-hidden="true"
+          />
+
+          {/* Logo */}
+          <Image
+            src="/logos/black-logo.png"
+            alt="Balance Box Logo"
+            width={32}
+            height={32}
+            className="h-11 w-auto cursor-pointer dark:invert"
           />
 
           <div className="flex-1" />
