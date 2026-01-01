@@ -81,6 +81,7 @@ export function LoginForm({
       setError(error.message || "Invalid code");
       toast.error(error.message || "Invalid code");
     } else {
+      // PostHogProvider handles login tracking (new_user_created / user_login_successfully)
       toast.success("Logged in successfully");
       router.push("/business-info");
     }

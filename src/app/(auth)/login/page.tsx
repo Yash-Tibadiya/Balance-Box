@@ -7,10 +7,12 @@ import { authClient } from "@/lib/auth-client";
 import { LoginForm } from "../_components/login-form";
 import LoginHeroPanel from "../_components/login-hero-panel";
 import { checkCurrentUserBusinessInfo } from "@/models/users-actions";
+import { useEvent } from "@/hooks/use-event";
 
 export default function LoginPage() {
   const [loading, setLoading] = useState(true);
   const router = useRouter();
+  const { sendEvent } = useEvent();
 
   useEffect(() => {
     const checkSession = async () => {
@@ -25,6 +27,9 @@ export default function LoginPage() {
           } else {
             router.push("/business-info");
           }
+        } else {
+          // User is not logged in, capture view_login_page event
+          sendEvent("view_login_page");
         }
       } catch (error) {
         console.error("Error checking session:", error);
@@ -34,7 +39,7 @@ export default function LoginPage() {
     };
 
     checkSession();
-  }, [router]);
+  }, [router, sendEvent]);
 
   if (loading) {
     return <Loader />;
