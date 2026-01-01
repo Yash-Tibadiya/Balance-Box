@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import { Toaster } from "@/components/ui/sonner";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
+import { PostHogProvider } from "../providers/PosthogProvider";
+import { PostHogPageView } from "../components/PostHogPageView";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,15 +32,18 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem={false}
-          disableTransitionOnChange
-        >
-          {children}
-          <Toaster position="bottom-right" richColors />
-        </ThemeProvider>
+        <PostHogProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem={false}
+            disableTransitionOnChange
+          >
+            <PostHogPageView />
+            {children}
+            <Toaster position="bottom-right" richColors />
+          </ThemeProvider>
+        </PostHogProvider>
       </body>
     </html>
   );
