@@ -15,6 +15,7 @@ import { Button } from "@/components/ui/button";
 import { PhoneInput } from "@/components/ui/phone-input";
 import { LoaderCircle, Building2, MapPin } from "lucide-react";
 import { updateCurrentUserBusinessInfo } from "@/models/users-actions";
+import { useEvent } from "@/hooks/use-event";
 
 export function BusinessInfoForm({
   className,
@@ -23,6 +24,7 @@ export function BusinessInfoForm({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
+  const { sendEvent } = useEvent();
 
   const [formData, setFormData] = useState({
     businessName: "",
@@ -48,6 +50,17 @@ export function BusinessInfoForm({
         setLoading(false);
         return;
       }
+
+      // Track business info submitted event
+      sendEvent("business_info_submitted", {
+        businessName: formData.businessName,
+        phone: formData.phone,
+        businessAddress: formData.businessAddress,
+        businessCity: formData.businessCity,
+        businessState: formData.businessState,
+        businessCountry: formData.businessCountry,
+        businessZip: formData.businessZip,
+      });
 
       toast.success("Business information saved successfully");
       router.push("/");
