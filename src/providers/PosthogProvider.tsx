@@ -65,7 +65,6 @@ export function PostHogProvider({ children }: { children: React.ReactNode }) {
                 email: user.email,
                 name: user.name,
                 image: user.image,
-                createdAt: user.createdAt,
                 timestamp: new Date().toISOString(),
               });
             } else {
@@ -74,7 +73,6 @@ export function PostHogProvider({ children }: { children: React.ReactNode }) {
                 email: user.email,
                 name: user.name,
                 image: user.image,
-                createdAt: user.createdAt,
                 timestamp: new Date().toISOString(),
               });
             }
