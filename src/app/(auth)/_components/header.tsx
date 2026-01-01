@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import Image from "next/image";
+import Link from "next/link";
 
 export function Header() {
   return (
@@ -30,13 +31,15 @@ export function Header() {
           />
 
           {/* Logo */}
-          <Image
-            src="/logos/black-logo.png"
-            alt="Balance Box Logo"
-            width={32}
-            height={32}
-            className="h-11 w-auto cursor-pointer dark:invert"
-          />
+          <Link href="/home">
+            <Image
+              src="/logos/black-logo.png"
+              alt="Balance Box Logo"
+              width={32}
+              height={32}
+              className="h-11 w-auto cursor-pointer dark:invert"
+            />
+          </Link>
 
           <div className="flex-1" />
 
