@@ -540,34 +540,6 @@ const Dashboard = () => {
         </div>
       </SidebarInset>
     </SidebarProvider>
-    // <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-    //   <div className="flex flex-col items-center gap-8 rounded-lg bg-white p-8 shadow-lg dark:bg-zinc-900">
-    //     <div className="text-center">
-    //       <h1 className="text-4xl font-bold">Welcome to Dashboard</h1>
-    //       <p className="mt-2 text-gray-600 dark:text-gray-400">
-    //         {session?.user?.email}
-    //       </p>
-    //     </div>
-
-    //     <div className="grid gap-4">
-    //       <p className="text-lg">
-    //         <strong>Name:</strong> {session?.user?.name || "N/A"}
-    //       </p>
-    //       <p className="text-lg">
-    //         <strong>Email:</strong> {session?.user?.email || "N/A"}
-    //       </p>
-    //     </div>
-
-    //     <Button
-    //       onClick={handleLogout}
-    //       variant="destructive"
-    //       className="mt-4 flex items-center gap-2"
-    //     >
-    //       <LogOut className="size-4" />
-    //       Logout
-    //     </Button>
-    //   </div>
-    // </div>
   );
 };
 

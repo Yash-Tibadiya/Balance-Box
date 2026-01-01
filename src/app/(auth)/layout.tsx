@@ -1,5 +1,11 @@
 import { Header } from "./_components/header";
 import { Footer } from "./_components/footer";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Authentication | Balance Box",
+  description: "Authentication for Best financial management web application",
+};
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
